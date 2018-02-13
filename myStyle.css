@@ -30,7 +30,6 @@
 .banner-4 {
   background: url('./images/img_lights_wide.jpg') no-repeat;
 }
-
 .service-holder {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,12 +40,29 @@
   list-style: none;
 }
 
+.service:nth-child(1){
+  background:url('./images/img_nature.jpg') no-repeat;
+}
+
+.service:nth-child(2){
+  background:url('./images/img_fjords.jpg') no-repeat;
+}
+
+.service:nth-child(3){
+  background:url('./images/img_mountains.jpg') no-repeat;
+}
+
+.service:nth-child(4){
+  background:url('./images/img_lights.jpg') no-repeat;
+}
+
 .service {
   width: 25%;
   position: relative;
   text-align: center;
   color: white;
   font-size: 0;
+  background-size: cover !important;
   /* Solves unwanted margin */
 }
 
@@ -57,18 +73,14 @@
 /* The Text inside the service*/
 .service a {
   font-size: 18px;
-  position: absolute;
-  display: table;
-  width: 100%;
+  position: relative;
+  display: block;
+  text-align: center;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
+  line-height: 180px;
   font-size: 24px;
   color: white;
   text-shadow:
@@ -79,11 +91,6 @@
 }
 
 /* Holds the text inside over the small images */
-.service a span {
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .service:hover{
   -webkit-filter: brightness(130%);
   filter: brightness(130%);
