@@ -54,10 +54,7 @@
   width: 100%;
 }
 
-/* The Text inside the service
-   On desktop it changes banner;
-   On mobile it works as link */
-
+/* The Text inside the service*/
 .service a {
   font-size: 18px;
   position: absolute;
@@ -69,6 +66,16 @@
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+     -1px 1px 0 #000,
+      1px 1px 0 #000;
 }
 
 /* Holds the text inside over the small images */
@@ -77,13 +84,20 @@
   vertical-align: middle;
 }
 
-.service:hover {
-  -webkit-filter: brightness(80%);
-  filter: brightness(80%);
+.service:hover{
+  -webkit-filter: brightness(130%);
+  filter: brightness(130%);
 }
 
-/* Split Services in 2 coloumns*/
+.active.service a {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */
+background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 39%, rgba(0,0,0,0.41) 40%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
 
+/* Split Services in 2 coloumns and remove banner*/
 @media screen and (max-width: 650px) {
   #banner {
     display: none;
