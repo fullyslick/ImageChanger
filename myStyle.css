@@ -70,9 +70,7 @@
   width: 100%;
 }
 
-/* The Text inside the service*/
 .service a {
-  font-size: 18px;
   position: relative;
   display: block;
   text-align: center;
@@ -80,9 +78,9 @@
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  line-height: 180px;
+  height: 180px;
+  padding: 0 10px;
   font-size: 24px;
-  color: white;
   text-shadow:
     -1px -1px 0 #000,
      1px -1px 0 #000,
@@ -90,16 +88,29 @@
       1px 1px 0 #000;
 }
 
-/* Holds the text inside over the small images */
 .service:hover{
   -webkit-filter: brightness(130%);
   filter: brightness(130%);
 }
 
+/* The Text inside the service*/
+.link-holder{
+  display: table;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.link-holder>span{
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .active.service a {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */
-background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 39%, rgba(0,0,0,0.41) 40%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */ /* FF3.6-15 */
 background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+background: -webkit-radial-gradient(center, ellipse, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%);
+background: -o-radial-gradient(center, ellipse, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%);
 background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
