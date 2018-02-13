@@ -14,20 +14,20 @@
   transition: all 0.8s linear;
 }
 
-/* Classes that holds banner images */
-.service-1 {
+/* Classes that holds banner images start */
+.banner-1 {
   background: url('./images/img_nature_wide.jpg') no-repeat;
 }
 
-.service-2 {
+.banner-2 {
   background: url('./images/img_fjords_wide.jpg') no-repeat;
 }
 
-.service-3 {
+.banner-3 {
   background: url('./images/img_mountains_wide.jpg') no-repeat;
 }
 
-.service-4 {
+.banner-4 {
   background: url('./images/img_lights_wide.jpg') no-repeat;
 }
 
@@ -71,13 +71,10 @@
   transform: translate(-50%, -50%);
 }
 
+/* Holds the text inside over the small images */
 .service a span {
   display: table-cell;
   vertical-align: middle;
-}
-
-.service div:hover {
-  cursor: initial;
 }
 
 .service:hover {
