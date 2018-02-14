@@ -1,52 +1,68 @@
 $(document).ready(function() {
   // Get the services links-images, to know how clases holding images should be loop through
   const services = $(".service");
-  // Get the banner
-  const banner = $("#banner");
+  // Get all banners
+  const banner = $('#banner-holder').children();
   // Holds the current banner image number, it is related to  the class "banner-"
-  var currentImage = 1;
+  var currentImage = 0;
+  // Holds the position of previous banner before the active one
+  var previousBanner = 0;
+  // Change this to set the delay time between switching banners
+  const delayTime = 3000;
 
   // Changes the background and elements inside banner
   function changeBackground() {
-    //Logs the the time of the image change
-    console.log('New image loaded');
-    //Clear all classes from the banner to remove the previous background image
-    banner.removeClass();
-    //Add a class with the new background image
-    banner.addClass('banner-' + currentImage);
-
-    // Loop through all service elements and remove the active class
+    // Loop through all service elements and remove the 'active' class to remove the highlight
+    // and hide all banners (the sub class sets the z-index = 1 it is default )
     for (var i = 0; i < services.length; i++) {
       $(services[i]).removeClass('active');
+      $(banner[i]).removeClass('show');
     }
-    //Make only the current service .active
-    $(services[currentImage-1]).addClass('active');
+
+    // Set the array position of the previous banner, by -1 of the current
+    previousBanner = currentImage - 1;
+    if (previousBanner == -1) {
+      // If this is the first picture/banner displayed, make the previous banner = last
+      previousBanner = services.length - 1;
+    }
+
+    // Set the behind class for the previous banner,
+    // making it stand out from all absolute positioned banners,
+    // but just behind the current
+    $(banner[previousBanner]).addClass('behind');
+
+    // Make only the current service .active or highlighted
+    $(services[currentImage]).addClass('active');
+
+    // Make only current banner visible
+    $(banner[currentImage]).addClass('show');
+
+     // Remove the previous banner class behind to make it with a standard z-index
+     setTimeout(function functionName() {
+       $(banner[previousBanner]).removeClass('behind')
+     }, delayTime)
   }
 
   //Loop function that switches images automaticly
   function slideShow() {
     // This will cause the delay between switching images
     setTimeout(function() {
-      // Call changeBackground() to swotch the images
-      changeBackground();
-
+      //Increment the current image to switch background
       currentImage++;
-      //  if the currentImage < the number of the services, call the slideShow function again
-      if (currentImage < services.length + 1) {
+      // Call changeBackground() to switch the images
+      changeBackground();
+      if (currentImage < services.length) {
         slideShow();
       } else {
         // It is now on the last image so reset the currentImage to 1
         // And start the slideShow again
-        currentImage = 1;
+        currentImage = 0;
+        changeBackground()
         slideShow();
       }
-    }, 3000) //  ..  setTimeout() delay between image switching
+    }, delayTime) //  ..  setTimeout() delay between image switching
   }
 
-  // Call change background to set the first default image on page load
-  changeBackground()
-  // Set the currentImage to the second to prevent double loading of the first image in the slideShow
-  currentImage++;
-  // Now execute the slide show
+  // On page laod execite the slideShow, do not forget to set the first banner in html with class show
   slideShow();
 });

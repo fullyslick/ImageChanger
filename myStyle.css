@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-#banner {
+#banner-holder {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: 300px;
@@ -12,9 +12,21 @@
   -webkit-transition: all 0.8s linear;
   -o-transition: all 0.8s linear;
   transition: all 0.8s linear;
+  display: block;
+  position: relative;
 }
 
-/* Classes that holds banner images start */
+/* All the banners inside the holder */
+.sub {
+  height: 300px;
+  position: absolute;
+  width: 100%;
+  max-width: 960px;
+  background-size: cover !important;
+  z-index: 1; /* This is how fading effect is achieved */
+}
+
+/* Individual banners and their backgrounds */
 .banner-1 {
   background: url('./images/img_nature_wide.jpg') no-repeat;
 }
@@ -30,6 +42,30 @@
 .banner-4 {
   background: url('./images/img_lights_wide.jpg') no-repeat;
 }
+
+/* Fading animation */
+@keyframes fader {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+/* Displays the banner */
+.show {
+  display: block;
+  z-index: 10; /* This is how fading effect is achieved */
+  animation: fader 0.3s linear 1;
+}
+
+/* The banner behind the currently displayed one
+ Solves opacity problem*/
+.behind {
+  z-index: 5;
+}
+
 .service-holder {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -40,20 +76,21 @@
   list-style: none;
 }
 
-.service:nth-child(1){
-  background:url('./images/img_nature.jpg') no-repeat;
+/* The small images bellow banner */
+.service:nth-child(1) {
+  background: url('./images/img_nature.jpg') no-repeat;
 }
 
-.service:nth-child(2){
-  background:url('./images/img_fjords.jpg') no-repeat;
+.service:nth-child(2) {
+  background: url('./images/img_fjords.jpg') no-repeat;
 }
 
-.service:nth-child(3){
-  background:url('./images/img_mountains.jpg') no-repeat;
+.service:nth-child(3) {
+  background: url('./images/img_mountains.jpg') no-repeat;
 }
 
-.service:nth-child(4){
-  background:url('./images/img_lights.jpg') no-repeat;
+.service:nth-child(4) {
+  background: url('./images/img_lights.jpg') no-repeat;
 }
 
 .service {
@@ -81,43 +118,44 @@
   height: 180px;
   padding: 0 10px;
   font-size: 24px;
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-     -1px 1px 0 #000,
-      1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.service:hover{
+.service:hover {
   -webkit-filter: brightness(130%);
   filter: brightness(130%);
 }
 
-/* The Text inside the service*/
-.link-holder{
+/* Text inside the services */
+.link-holder {
   display: table;
   height: 100%;
   width: 100%;
   text-align: center;
 }
-
-.link-holder>span{
+/* Centers the text in the link horizontally and vertically */
+.link-holder>span {
   display: table-cell;
   vertical-align: middle;
 }
 
+/* The highlighted service a.k.a. 'active' */
 .active.service a {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */ /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
-background: -webkit-radial-gradient(center, ellipse, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%);
-background: -o-radial-gradient(center, ellipse, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%);
-background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 39%,rgba(0,0,0,0.41) 40%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */
+  /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  background: -o-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
 }
 
 /* Split Services in 2 coloumns and remove banner*/
 @media screen and (max-width: 650px) {
-  #banner {
+  #banner-holder {
     display: none;
   }
   .service {
