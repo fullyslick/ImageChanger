@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
 .shell {
   max-width: 960px;
   margin: 0 auto;
@@ -17,16 +26,19 @@
 }
 
 /* All the banners inside the holder */
+
 .sub {
   height: 300px;
   position: absolute;
   width: 100%;
   max-width: 960px;
   background-size: cover !important;
-  z-index: 1; /* This is how fading effect is achieved */
+  z-index: 1;
+  /* This is how fading effect is achieved */
 }
 
 /* Individual banners and their backgrounds */
+
 .banner-1 {
   background: url('./images/img_nature_wide.jpg') no-repeat;
 }
@@ -44,6 +56,7 @@
 }
 
 /* Fading animation */
+
 @keyframes fader {
   0% {
     opacity: 0;
@@ -54,14 +67,17 @@
 }
 
 /* Displays the banner */
+
 .show {
   display: block;
-  z-index: 10; /* This is how fading effect is achieved */
+  z-index: 10;
+  /* This is how fading effect is achieved */
   animation: fader 0.3s linear 1;
 }
 
 /* The banner behind the currently displayed one
  Solves opacity problem*/
+
 .behind {
   z-index: 5;
 }
@@ -110,19 +126,23 @@
 }
 
 /* Text inside the services */
+
 .link-holder {
   display: table;
   height: 100%;
   width: 100%;
   text-align: center;
 }
+
 /* Centers the text in the link horizontally and vertically */
+
 .link-holder>span {
   display: table-cell;
   vertical-align: middle;
 }
 
 /* The highlighted service a.k.a. 'active' */
+
 .active.service a {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */
   /* FF3.6-15 */
@@ -137,6 +157,7 @@
 }
 
 /* Split Services in 2 coloumns and remove banner*/
+
 @media screen and (max-width: 650px) {
   #banner-holder {
     display: none;
