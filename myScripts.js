@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  // Get the services links-images, to know how clases holding images should be loop through
-  const services = $(".service");
+  // Get the services
+  const services = $("#service-holder").children();
   // Get all banners
   const banner = $('#banner-holder').children();
-  // Holds the current banner image number, it is related to  the class "banner-"
-  var currentImage = 0;
+  // Holds the position of current banner
+  var currentBanner = 0;
   // Holds the position of previous banner before the active one
   var previousBanner = 0;
   // Change this to set the delay time between switching banners
@@ -12,57 +12,60 @@ $(document).ready(function() {
 
   // Changes the background and elements inside banner
   function changeBackground() {
-    // Loop through all service elements and remove the 'active' class to remove the highlight
-    // and hide all banners (the sub class sets the z-index = 1 it is default )
+    // Remove the "active" class from all 'services'
+    // Remove the "show" class from all 'banners'
     for (var i = 0; i < services.length; i++) {
       $(services[i]).removeClass('active');
       $(banner[i]).removeClass('show');
     }
 
-    // Set the array position of the previous banner, by -1 of the current
-    previousBanner = currentImage - 1;
+    // Get the position of the previous banner
+    previousBanner = currentBanner - 1;
     if (previousBanner == -1) {
-      // If this is the first picture/banner displayed, make the previous banner = last
+      // If this is the first banner to be displayed, then previous is actually the last one
       previousBanner = services.length - 1;
     }
 
-    // Set the behind class for the previous banner,
-    // making it stand out from all absolute positioned banners,
-    // but just behind the current
+    // Sets the "behind" class for the previous banner,
+    // making it just behind the currently displayed one
     $(banner[previousBanner]).addClass('behind');
 
-    // Make only the current service .active or highlighted
-    $(services[currentImage]).addClass('active');
+    // Makes only the current service .active or highlighted
+    $(services[currentBanner]).addClass('active');
 
-    // Make only current banner visible
-    $(banner[currentImage]).addClass('show');
+    // Makes only current banner visible
+    $(banner[currentBanner]).addClass('show');
 
-     // Remove the previous banner class behind to make it with a standard z-index
+     // Since the current banner is visible,
+     // remove the previous banner
      setTimeout(function functionName() {
        $(banner[previousBanner]).removeClass('behind')
      }, delayTime)
   }
 
-  //Loop function that switches images automaticly
+  // Switches images automaticly with a delay
   function slideShow() {
     // This will cause the delay between switching images
     setTimeout(function() {
-      //Increment the current image to switch background
-      currentImage++;
+      // Increment the current image to switch background,
+      // On page load the first banner & service will be displayed because of the class - show & active
+      // because CSS is loaded before JS.
+      // So the slide show will begin with one position ahead
+      currentBanner++;
       // Call changeBackground() to switch the images
       changeBackground();
-      if (currentImage < services.length) {
+      // Call the slideShow again, this creats loop effect with delay
+      if (currentBanner < services.length) {
         slideShow();
       } else {
-        // It is now on the last image so reset the currentImage to 1
+        // It is now on the last image so reset the currentBanner to 0
         // And start the slideShow again
-        currentImage = 0;
+        currentBanner = 0;
         changeBackground()
         slideShow();
       }
-    }, delayTime) //  ..  setTimeout() delay between image switching
+    }, delayTime) //  ..  The delay time between image switching
   }
-
-  // On page laod execite the slideShow, do not forget to set the first banner in html with class show
+  // On page laod execite the slideShow, do not forget to set the first banner in html with class show & first li witch class "active"
   slideShow();
 });

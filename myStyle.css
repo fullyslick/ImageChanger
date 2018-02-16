@@ -1,62 +1,64 @@
+/* -----------------------------------*/
+/* ---------->>> GLOBAL <<<-----------*/
+/* -----------------------------------*/
+/* You would probably already have this in your css file */
 * {
   margin: 0;
   padding: 0;
   outline: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box
+  box-sizing: border-box;
+  outline: 0;
 }
+a{
+  text-decoration: none;
+}
+ol, ul {
+        list-style: none;
+}
+html { font-size:100.01%; }
 
 .shell {
   max-width: 960px;
   margin: 0 auto;
 }
 
+/* -----------------------------------*/
+/* ---------->>> Banner <<<-----------*/
+/* -----------------------------------*/
 #banner-holder {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 300px;
-  border: solid 1px;
   background-size: cover;
-  -webkit-transition: all 0.8s linear;
-  -o-transition: all 0.8s linear;
-  transition: all 0.8s linear;
-  display: block;
-  position: relative;
 }
 
+#banner-holder,
+#banner-holder>div{
+  height: 300px; /* Parent & children should share same height to avoid gaps or overflow issues */
+}
 /* All the banners inside the holder */
-
-.sub {
-  height: 300px;
+#banner-holder>div {
   position: absolute;
   width: 100%;
   max-width: 960px;
   background-size: cover !important;
-  z-index: 1;
-  /* This is how fading effect is achieved */
+  z-index: 1;   /* Important for fading effect */
 }
 
-/* Individual banners and their backgrounds */
-
-.banner-1 {
-  background: url('./images/img_nature_wide.jpg') no-repeat;
+/* The banner that is currently displayed */
+#banner-holder>div.show {
+  display: block;
+  z-index: 10; /* Currently displayed has the highiest z-index */
+  animation: fader 0.4s linear 1; /* This is how fading effect is achieved */
 }
 
-.banner-2 {
-  background: url('./images/img_fjords_wide.jpg') no-repeat;
+/* The banner behind the currently displayed one. Solves opacity problem */
+#banner-holder>div.behind {
+  z-index: 5; /* Important for fading effect */
 }
 
-.banner-3 {
-  background: url('./images/img_mountains_wide.jpg') no-repeat;
-}
-
-.banner-4 {
-  background: url('./images/img_lights_wide.jpg') no-repeat;
-}
-
-/* Fading animation */
-
+/* Fading animation for the banner */
 @keyframes fader {
   0% {
     opacity: 0;
@@ -66,23 +68,10 @@
   }
 }
 
-/* Displays the banner */
-
-.show {
-  display: block;
-  z-index: 10;
-  /* This is how fading effect is achieved */
-  animation: fader 0.3s linear 1;
-}
-
-/* The banner behind the currently displayed one
- Solves opacity problem*/
-
-.behind {
-  z-index: 5;
-}
-
-.service-holder {
+/* -----------------------------------*/
+/* ---------->>> Services <<<-----------*/
+/* -----------------------------------*/
+#service-holder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,26 +81,18 @@
   list-style: none;
 }
 
-.service {
-  width: 25%;
+#service-holder>li {
+  width: 25%; /* If the services are not 4, change this. Eg. 8 services: 100% : 8 =  12.5% */
   position: relative;
-  text-align: center;
-  color: white;
-  font-size: 0;
-  background-size: cover !important;
+  background-size: cover;
   /* Solves unwanted margin */
 }
 
-.service img {
-  width: 100%;
-}
-
-.service a {
+#service-holder>li a {
   position: relative;
   display: block;
   text-align: center;
   height: 100%;
-  text-decoration: none;
   color: #ffffff;
   font-weight: bold;
   height: 180px;
@@ -120,30 +101,29 @@
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.service:hover {
+/* On hover highlights the service */
+#service-holder>li:hover {
   -webkit-filter: brightness(130%);
   filter: brightness(130%);
 }
 
-/* Text inside the services */
-
-.link-holder {
+/* Used to vertically center a text inside the service link */
+#service-holder>li>a>span {
   display: table;
   height: 100%;
   width: 100%;
   text-align: center;
 }
 
-/* Centers the text in the link horizontally and vertically */
-
-.link-holder>span {
+/* Also used to vertically center a text inside the service link */
+#service-holder>li>a>span>span {
   display: table-cell;
   vertical-align: middle;
 }
 
 /* The highlighted service a.k.a. 'active' */
-
-.active.service a {
+/* Change this to achive different highlight effect */
+#service-holder>li.active>a {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */
   /* FF3.6-15 */
   background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
@@ -156,13 +136,35 @@
   /* IE6-9 fallback on horizontal gradient */
 }
 
-/* Split Services in 2 coloumns and remove banner*/
+/* -----------------------------------*/
+/* ---------->>> Images <<<-----------*/
+/* -----------------------------------*/
+/* Individual images for the banners and services */
+.image-1 {
+  background: url('./images/img_nature_wide.jpg') no-repeat;
+}
 
+.image-2 {
+  background: url('./images/img_fjords_wide.jpg') no-repeat;
+}
+
+.image-3 {
+  background: url('./images/img_mountains_wide.jpg') no-repeat;
+}
+
+.image-4 {
+  background: url('./images/img_lights_wide.jpg') no-repeat;
+}
+
+/* -----------------------------------*/
+/* ---------->>> Responsive Design <<<-----------*/
+/* -----------------------------------*/
+/* Split Services in 2 coloumns and removes banner */
 @media screen and (max-width: 650px) {
   #banner-holder {
     display: none;
   }
-  .service {
+  #service-holder>li {
     width: 50%;
   }
 }
