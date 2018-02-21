@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  // Get the services
-  const services = $("#service-holder").children();
+  // Get the smallImages
+  const smallImages = $("#small-images-holder").children();
   // Get all banners
   const banner = $('#banner-holder').children();
   // Holds the position of current banner
@@ -12,10 +12,10 @@ $(document).ready(function() {
 
   // Changes the background and elements inside banner
   function changeBackground() {
-    // Remove the "active" class from all 'services'
+    // Remove the "active" class from all 'smallImages'
     // Remove the "show" class from all 'banners'
-    for (var i = 0; i < services.length; i++) {
-      $(services[i]).removeClass('active');
+    for (var i = 0; i < smallImages.length; i++) {
+      $(smallImages[i]).removeClass('active');
       $(banner[i]).removeClass('show');
     }
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
     previousBanner = currentBanner - 1;
     if (previousBanner == -1) {
       // If this is the first banner to be displayed, then previous is actually the last one
-      previousBanner = services.length - 1;
+      previousBanner = smallImages.length - 1;
     }
 
     // Sets the "behind" class for the previous banner,
@@ -31,7 +31,7 @@ $(document).ready(function() {
     $(banner[previousBanner]).addClass('behind');
 
     // Makes only the current service .active or highlighted
-    $(services[currentBanner]).addClass('active');
+    $(smallImages[currentBanner]).addClass('active');
 
     // Makes only current banner visible
     $(banner[currentBanner]).addClass('show');
@@ -55,7 +55,7 @@ $(document).ready(function() {
       // Call changeBackground() to switch the images
       changeBackground();
       // Call the slideShow again, this creats loop effect with delay
-      if (currentBanner < services.length) {
+      if (currentBanner < smallImages.length) {
         slideShow();
       } else {
         // It is now on the last image so reset the currentBanner to 0

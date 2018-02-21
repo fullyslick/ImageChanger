@@ -69,9 +69,9 @@ html { font-size:100.01%; }
 }
 
 /* -----------------------------------*/
-/* ---------->>> Services <<<-----------*/
+/* ---------->>> Small Images <<<-----------*/
 /* -----------------------------------*/
-#service-holder {
+#small-images-holder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,14 +81,14 @@ html { font-size:100.01%; }
   list-style: none;
 }
 
-#service-holder>li {
-  width: 25%; /* If the services are not 4, change this. Eg. 8 services: 100% : 8 =  12.5% */
+#small-images-holder>li {
+  width: 25%; /* If the small images are not 4, change this. Eg. 8 small images: 100% : 8 =  12.5% */
   position: relative;
   background-size: cover;
   /* Solves unwanted margin */
 }
 
-#service-holder>li a {
+#small-images-holder>li a {
   position: relative;
   display: block;
   text-align: center;
@@ -101,29 +101,29 @@ html { font-size:100.01%; }
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-/* On hover highlights the service */
-#service-holder>li:hover {
+/* On hover highlights the small image */
+#small-images-holder>li:hover {
   -webkit-filter: brightness(130%);
   filter: brightness(130%);
 }
 
-/* Used to vertically center a text inside the service link */
-#service-holder>li>a>span {
+/* Used to vertically center a text inside the small image link */
+#small-images-holder>li>a>span {
   display: table;
   height: 100%;
   width: 100%;
   text-align: center;
 }
 
-/* Also used to vertically center a text inside the service link */
-#service-holder>li>a>span>span {
+/* Also used to vertically center a text inside the small image link */
+#small-images-holder>li>a>span>span {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* The highlighted service a.k.a. 'active' */
+/* The highlighted small image a.k.a. 'active' */
 /* Change this to achive different highlight effect */
-#service-holder>li.active>a {
+#small-images-holder>li.active>a {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */
   /* FF3.6-15 */
   background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
@@ -139,7 +139,7 @@ html { font-size:100.01%; }
 /* -----------------------------------*/
 /* ---------->>> Images <<<-----------*/
 /* -----------------------------------*/
-/* Individual images for the banners and services */
+/* Individual images for the banners and small images */
 .image-1 {
   background: url('./images/img_nature_wide.jpg') no-repeat;
 }
@@ -159,12 +159,19 @@ html { font-size:100.01%; }
 /* -----------------------------------*/
 /* ---------->>> Responsive Design <<<-----------*/
 /* -----------------------------------*/
-/* Split Services in 2 coloumns and removes banner */
+/* Split small images in 2 coloumns and removes banner */
 @media screen and (max-width: 650px) {
   #banner-holder {
     display: none;
   }
-  #service-holder>li {
+  #small-images-holder>li {
     width: 50%;
+  }
+}
+
+/*-------------->>> Small Screens <<<----------------*/
+@media screen and (max-width: 400px) {
+  #small-images-holder>li {
+    width: 100%;
   }
 }
