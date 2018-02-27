@@ -1,6 +1,8 @@
 $(document).ready(function() {
+  // Get the holder of the small images
+  const smallImageHolder = $("#small-images-holder")
   // Get the smallImages
-  const smallImages = $("#small-images-holder").children();
+  const smallImages = smallImageHolder.children();
   // Get all banners
   const banner = $('#banner-holder').children();
   // Holds the position of current banner
@@ -66,6 +68,17 @@ $(document).ready(function() {
       }
     }, delayTime) //  ..  The delay time between image switching
   }
+
+  // Event listener for all anchors inside smallImages' lists
+  for (var i = 0; i < smallImages.length; i++) {
+
+    let clickedAnchorNumber = i;
+
+    $(smallImages[i]).on('click', 'a', function(e){
+      console.log(clickedAnchorNumber);
+      });
+    }
+
   // On page laod execite the slideShow, do not forget to set the first banner in html with class show & first li witch class "active"
   slideShow();
 });
