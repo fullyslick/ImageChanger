@@ -1,47 +1,77 @@
+/* -----------------------------------*/
+/* ---------->>> GLOBAL <<<-----------*/
+/* -----------------------------------*/
+/* You would probably already have this in your css file */
 * {
   margin: 0;
   padding: 0;
   outline: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box
+  box-sizing: border-box;
+  outline: 0;
 }
+a{
+  text-decoration: none;
+}
+ol, ul {
+        list-style: none;
+}
+html { font-size:100.01%; }
 
 .shell {
   max-width: 960px;
   margin: 0 auto;
 }
 
-#banner {
+/* -----------------------------------*/
+/* ---------->>> Banner <<<-----------*/
+/* -----------------------------------*/
+#banner-holder {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 300px;
-  border: solid 1px;
   background-size: cover;
-  -webkit-transition: all 0.8s linear;
-  -o-transition: all 0.8s linear;
-  transition: all 0.8s linear;
 }
 
-/* Classes that holds banner images */
-
-.service-1 {
-  background: url('./images/img_nature_wide.jpg') no-repeat;
+#banner-holder,
+#banner-holder>div{
+  height: 300px; /* Parent & children should share same height to avoid gaps or overflow issues */
+}
+/* All the banners inside the holder */
+#banner-holder>div {
+  position: absolute;
+  width: 100%;
+  max-width: 960px;
+  background-size: cover !important;
+  z-index: 1;   /* Important for fading effect */
 }
 
-.service-2 {
-  background: url('./images/img_fjords_wide.jpg') no-repeat;
+/* The banner that is currently displayed */
+#banner-holder>div.show {
+  display: block;
+  z-index: 10; /* Currently displayed has the highiest z-index */
+  animation: fader 0.4s linear 1; /* This is how fading effect is achieved */
 }
 
-.service-3 {
-  background: url('./images/img_mountains_wide.jpg') no-repeat;
+/* The banner behind the currently displayed one. Solves opacity problem */
+#banner-holder>div.behind {
+  z-index: 5; /* Important for fading effect */
 }
 
-.service-4 {
-  background: url('./images/img_lights_wide.jpg') no-repeat;
+/* Fading animation for the banner */
+@keyframes fader {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
-.service-holder {
+/* -----------------------------------*/
+/* ---------->>> Small Images <<<-----------*/
+/* -----------------------------------*/
+#small-images-holder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,57 +81,97 @@
   list-style: none;
 }
 
-.service {
-  width: 25%;
+#small-images-holder>li {
+  width: 25%; /* If the small images are not 4, change this. Eg. 8 small images: 100% : 8 =  12.5% */
   position: relative;
-  text-align: center;
-  color: white;
-  font-size: 0;
+  background-size: cover;
   /* Solves unwanted margin */
 }
 
-.service img {
-  width: 100%;
-}
-
-/* The Text inside the service
-   On desktop it changes banner;
-   On mobile it works as link */
-
-.service a {
-  font-size: 18px;
-  position: absolute;
-  display: table;
-  width: 100%;
+#small-images-holder>li a {
+  position: relative;
+  display: block;
+  text-align: center;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: bold;
+  height: 180px;
+  padding: 0 10px;
+  font-size: 24px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.service a span {
+/* On hover highlights the small image */
+#small-images-holder>li:hover {
+  -webkit-filter: brightness(130%);
+  filter: brightness(130%);
+}
+
+/* Used to vertically center a text inside the small image link */
+#small-images-holder>li>a>span {
+  display: table;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+/* Also used to vertically center a text inside the small image link */
+#small-images-holder>li>a>span>span {
   display: table-cell;
   vertical-align: middle;
 }
 
-.service div:hover {
-  cursor: initial;
+/* The highlighted small image a.k.a. 'active' */
+/* Change this to achive different highlight effect */
+#small-images-holder>li.active>a {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+39,000000+100&0+0,0.41+40,0.65+100 */
+  /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  background: -o-radial-gradient(center, ellipse, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 39%, rgba(0, 0, 0, 0.41) 40%, rgba(0, 0, 0, 0.65) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
 }
 
-.service:hover {
-  -webkit-filter: brightness(80%);
-  filter: brightness(80%);
+/* -----------------------------------*/
+/* ---------->>> Images <<<-----------*/
+/* -----------------------------------*/
+/* Individual images for the banners and small images */
+.image-1 {
+  background: url('./images/img_nature_wide.jpg') no-repeat;
 }
 
-/* Split Services in 2 coloumns*/
+.image-2 {
+  background: url('./images/img_fjords_wide.jpg') no-repeat;
+}
 
+.image-3 {
+  background: url('./images/img_mountains_wide.jpg') no-repeat;
+}
+
+.image-4 {
+  background: url('./images/img_lights_wide.jpg') no-repeat;
+}
+
+/* -----------------------------------*/
+/* ---------->>> Responsive Design <<<-----------*/
+/* -----------------------------------*/
+/* Split small images in 2 coloumns and removes banner */
 @media screen and (max-width: 650px) {
-  #banner {
+  #banner-holder {
     display: none;
   }
-  .service {
+  #small-images-holder>li {
     width: 50%;
+  }
+}
+
+/*-------------->>> Small Screens <<<----------------*/
+@media screen and (max-width: 400px) {
+  #small-images-holder>li {
+    width: 100%;
   }
 }
