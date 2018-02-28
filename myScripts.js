@@ -6,17 +6,18 @@ $(document).ready(function() {
   // Get all banners
   const banner = $('#banner-holder').children();
   // Holds the position of current banner
-  var currentBanner = 0;
+  let currentBanner = 0;
   // Holds the position of previous banner before the active one
-  var previousBanner = 0;
+  let previousBanner = 0;
   // Change this to set the delay time between switching banners
   const delayTime = 3000;
+  
 
   // Changes the background and elements inside banner
   function changeBackground() {
     // Remove the "active" class from all 'smallImages'
     // Remove the "show" class from all 'banners'
-    for (var i = 0; i < smallImages.length; i++) {
+    for (let i = 0; i < smallImages.length; i++) {
       $(smallImages[i]).removeClass('active');
       $(banner[i]).removeClass('show');
     }
@@ -70,7 +71,7 @@ $(document).ready(function() {
   }
 
   // Event listener for all anchors inside smallImages' lists
-  for (var i = 0; i < smallImages.length; i++) {
+  for (let i = 0; i < smallImages.length; i++) {
 
     let clickedAnchorNumber = i;
 
