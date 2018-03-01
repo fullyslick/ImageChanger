@@ -11,7 +11,7 @@ $(document).ready(function() {
   let previousBanner = 0;
   // Change this to set the delay time between switching banners
   const delayTime = 3000;
-  
+
 
   // Changes the background and elements inside banner
   function changeBackground() {
@@ -73,10 +73,8 @@ $(document).ready(function() {
   // Event listener for all anchors inside smallImages' lists
   for (let i = 0; i < smallImages.length; i++) {
 
-    let clickedAnchorNumber = i;
-
     $(smallImages[i]).on('click', 'a', function(e){
-      console.log(clickedAnchorNumber);
+      console.log(i);
       });
     }
 
