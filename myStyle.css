@@ -68,6 +68,32 @@ html { font-size:100.01%; }
   }
 }
 
+/*----------- Banner Arrows ----------------*/
+.arrows{
+  position: relative;
+  z-index: 20;
+  height: 100%;
+  display: block;
+  float: left;
+  padding: 0 10px;
+}
+
+.arrows:nth-of-type(2) {
+  float: right;
+}
+
+.arrows:hover{
+  background: #ffffff45;
+}
+.arrows svg{
+  width: 20px;
+  height: 100%;
+  fill: #ffffff;
+  stroke: #000000;
+  stroke-width: 3;
+
+}
+
 /* -----------------------------------*/
 /* ---------->>> Small Images <<<-----------*/
 /* -----------------------------------*/
