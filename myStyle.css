@@ -78,6 +78,7 @@ html { font-size:100.01%; }
   padding: 0 10px;
 }
 
+/* Just the next (right) arrow styling */
 .arrows:nth-of-type(2) {
   float: right;
 }
@@ -85,6 +86,7 @@ html { font-size:100.01%; }
 .arrows:hover{
   background: #ffffff45;
 }
+
 .arrows svg{
   width: 20px;
   height: 100%;
