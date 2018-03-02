@@ -1,5 +1,5 @@
 # About
-This is a simple `HTML`, `CSS`, `JS` code that switches banners and the small images below the banner are highlighted depending on the banner. To test the code download or clone this repository. Then open the `myHome.html` file inside any browser.
+This is a simple `HTML`, `CSS`, `JS` code that switches banners and the small images below the banner are highlighted depending on the banner. When the page is loaded banners start to change - the function is called "slideShow". The banner also changes on click of the small images below it or on click of the arrows. To test the code download or clone this repository. Then open the `myHome.html` file inside any browser.
 
 ## How To Implement
 To implement this code on your site please follow these steps:
@@ -26,11 +26,22 @@ To implement this code on your site please follow these steps:
   <div class="image-4"></div>
 </div>
 ```
+**Previous / Next arrows**
+5. Create to `anchors` with a `class="arrows"`. On the first `anchor` give an `id="previous-banner"` and on the second give an `id="next-banner"`. Example:
+```
+<a class="arrows"  id="previous-banner" href="#">
+</a>
+
+<a class="arrows" id="next-banner" href="#">
+</a>
+```
+
+You can place `svg` inside them for the arrows like in the provided code. I also have used SVG sprite, it is declared just below the opening `<body>`. Alternatively you can use `CSS` **background** property.
 
 **Small Images (Services)**
 5. Create an `ul` element with `id="small-images-holder"`. You will need this for the `JS` code to work.
 
-6. Create as many child `li` as as you have `image-` classes. And add an `active` class to the first `li`. Example:
+6. Create as many child `li` as you have `image-` classes. And add an `active` class to the first `li`. Example:
 ```
 <ul id="small-images-holder">
   <li class="image-1 active"></li>
