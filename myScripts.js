@@ -13,6 +13,9 @@ $(document).ready(function() {
   const delayTime = 3000;
   // Determines if the anchor is clicked
   let isAnchorClicked = false;
+  // Holds the arrows that switch previous/next banner
+  const arrows = $('.arrows');
+
 
   // Changes the background and elements inside banner
   function changeBackground() {
@@ -83,7 +86,6 @@ $(document).ready(function() {
           changeBackground()
           slideShow();
         }
-
       }
     }, delayTime) //  ..  The delay time between image switching
 
@@ -102,6 +104,40 @@ $(document).ready(function() {
 
       changeBackground();
     });
+  }
+
+  // Event listener for on click of arrows
+  for ( let i = 0; i < arrows.length; i++) {
+    $(arrows[i]).click( function(){
+
+      isAnchorClicked = true;
+
+      previousBanner = currentBanner;
+
+      // If this is previous banner arrow show previous banner
+      if ($(this).is('#previous-banner')) {
+
+        currentBanner = currentBanner - 1;
+
+        if (currentBanner == -1) {
+          currentBanner = smallImages.length - 1;
+        }
+
+        changeBackground();
+
+      } else{
+
+        currentBanner = currentBanner + 1;
+
+        if (currentBanner == smallImages.length) {
+          currentBanner = 0;
+        }
+
+        changeBackground();
+
+      }
+    });
+
   }
 
   // On page laod execite the slideShow, do not forget to set the first banner in html with class show & first li witch class "active"
