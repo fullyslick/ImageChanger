@@ -4,7 +4,7 @@ $(document).ready(function() {
   // Get the smallImages
   const smallImages = smallImageHolder.children();
   // Get all banners
-  const banner = $('#banner-holder').children();
+  const banner = $('#banner-holder').children('div');
   // Holds the position of current banner
   let currentBanner = 0;
   // Holds the position of previous banner before the active one
