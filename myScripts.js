@@ -96,6 +96,8 @@ $(document).ready(function() {
 
     $(smallImages[i]).on('click', 'a', function(e) {
 
+      e.preventDefault();
+
       isAnchorClicked = true;
 
       previousBanner = currentBanner;
@@ -108,7 +110,9 @@ $(document).ready(function() {
 
   // Event listener for on click of arrows
   for ( let i = 0; i < arrows.length; i++) {
-    $(arrows[i]).click( function(){
+    $(arrows[i]).click( function(e){
+
+      e.preventDefault();
 
       isAnchorClicked = true;
 
